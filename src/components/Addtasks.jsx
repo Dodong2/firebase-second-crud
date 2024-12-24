@@ -39,12 +39,14 @@ const Addtasks = () => {
   return (
     <>
       <div className="create-task">
-      <Link to='/task'><button> <FaArrowLeftLong/> </button></Link>
+      <div className="back-btn"><Link to='/task'><button> <FaArrowLeftLong/> </button></Link></div>
       <form onSubmit={Addtasks}>
         <input type=""placeholder="Username..." onChange={(event) => setUsername(event.target.value)} required/> 
         <input type=""placeholder="Title..." onChange={(event) => setTitle(event.target.value)} required/> 
-        <textarea type=""placeholder="Description..." onChange={(event) => setDescription(event.target.value)} required/> 
+        <textarea rows={10} type=""placeholder="Description..." onChange={(event) => setDescription(event.target.value)} required/> 
+        <div className="create-btn">
         <button type="submit">submit</button>
+        </div>
         </form>
       </div>
     </>
