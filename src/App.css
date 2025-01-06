@@ -110,7 +110,18 @@ button:hover {
 
 
 
-
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensures the overlay is on top of other elements */
+}
 
 
 /* update */
@@ -235,6 +246,10 @@ color: whitesmoke;
   transition: all .2s ease;
 }
 
+.details:hover {
+  box-shadow: 0 2px 5px rgba(0, 197, 0, 0.793);
+}
+
 .details + .details{
   margin-top: 15px;
 }
@@ -285,6 +300,8 @@ color: whitesmoke;
   border-radius: 10px;
   color: whitesmoke;
 }
+
+
 
 .details__summary::marker{
   content:'';
@@ -428,6 +445,7 @@ color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100px;
 }
 
 .create-btn button:hover {
@@ -473,4 +491,30 @@ color: whitesmoke;
   width: 500px;
   margin: auto;
 }
+}
+
+@media only screen and (max-width: 767px) {
+  .details__title {
+    font-size: clamp(1.2rem, 5vw, 2.2rem);
+  }
+
+  .details__desc-inner h3 {
+    font-size: clamp(.8rem, 5vw, .2rem);
+  }
+
+  .details__desc-inner p {
+    font-size: clamp(.7rem, 5vw, .1rem);
+  }
+
+  .create-task {
+    width: 100%;
+    max-width: 300px;
+  }
+  .update {
+    width: 100%;
+    max-width: 300px;
+  }
+
+
+
 }

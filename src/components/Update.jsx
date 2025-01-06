@@ -1,5 +1,5 @@
 /****** react library ******/
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 // import { useNavigate } from "react-router-dom";
 /****** firebase ******/
@@ -21,8 +21,19 @@ const Update = ({ todo, onClose, onUpdate }) => {
         onUpdate({ ...todo, username, title, description })
         onClose()
     }
+
+    useEffect(() => {
+      // Prevent scrolling when overlay is open
+      document.body.style.overflow = "hidden";
+      return () => {
+        // Restore scrolling when overlay is closed
+        document.body.style.overflow = "auto";
+      };
+    }, []);
+  
   return (
     <>
+    <div className="overlay">
       <div className='update'>
       <form onSubmit={handleUpdate}>
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username..."/>
@@ -33,6 +44,7 @@ const Update = ({ todo, onClose, onUpdate }) => {
         <button onClick={onClose}>Cancel</button>
         </div>
         </form>
+      </div>
       </div>
     </>
   )
